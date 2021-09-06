@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Draft</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="teal z-depth-1" marg>
+    <div class="nav-wrapper container">
+      <ul class="left hide-on-med-and-down">
+        <li>
+            <a href="#" class="white-text modal-trigger" data-target="modal-help">Help</a>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text" id="logout">Logout</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+        </li>
+    </ul>
+    </div>
+  </nav> 
+  <div class="modal" id="modal-help">
+    <div class="modal-content center-align">
+      <h5>Instructions</h5>
+      <h6>History</h6>
+      <p>To view the activity history, click the history button</p>
+      <h6>Weekly</h6>
+      <p>To view the weekly data</p>
+      <h6>Monthly</h6>
+      <p>To view the Monthly data</p>
+      <p style="font-size: small;">Tap anywhere to exit</p>
+    </div>
+  </div>
+  <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn teal z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+<div id="modal-login" class="modal">
+    <div class="modal-content">
+    <h4>Login</h4><br />
+    <form id="login-form">
+        <div class="input-field">
+        <input type="email" id="login-email" required />
+        <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+        <input type="password" id="login-password" required />
+        <label for="login-password">Your password</label>
+        </div>
+        <button class="btn teal z-depth-0">Login</button>
+    </form>
+    </div>
+</div>
+<div class="container">
+    <h2>OHLC Engine</h2>
+    <h3> Welcome to the Dashboard!</h3>
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Dashboard</span>          
+        <!-- buttons -->
+        <div class="row">
+          <div class="col">
+            <a href="" class="btn waves-effect waves-light modal-trigger" data-target="modal-history">View History</a>
+          </div>
+          <div class="col">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select style
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#" id="ohlc">OHLC</a>
+                <a class="dropdown-item" href="#" id="candle">Candlestick</a>
+                <a class="dropdown-item" href="#" id="hollow">Hollow candle</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select duration
+              </a>
+              <div class="dropdown-menu" aria-labelledby="myitem">
+                <a class="dropdown-item" id="w" href="#">Weekly</a>
+                <a class="dropdown-item" id="m"href="#">Monthly</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="search-bar">
+              <!--   search icon -->
+              <form action="">
+                <i class="fas fa-search i-search" aria-hidden="true"></i>
+                <!-- input -->
+                <input class="input-txt" type="text" id="search" name="search" placeholder="Enter the symbol">
+                <button>Go</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <p>charts</p>
+          </div>
+        </div>     
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="modal-history">
+    <!-- history will display here -->
+    <p>History will display here</p>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    var modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals);
+
+    var items = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(items);
+
+    });
+  </script>
+  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/d9be129d24.js" crossorigin="anonymous"></script>
+</body>
+</html>
